@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>机床二厂员工评比页面</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <style type="text/css">
+        body{width: auto ;margin: 0px auto;text-align: center}
+        img{ margin: 10px 18px ;border: 1px solid #b1adad;float: left}
+        .info{margin: 10px 0; border: 1px solid #f5f5f5;width: auto ;
+            height: 120px;float: left;padding: 5px;text-align: left}
+        .edit{width: 100%;height:200px;border: 1px solid #ff6631;clear: both}
+
+        /*.evaluate{float: left}*/
+    </style>
+
+    <script>
+        function doSubmit(){
+            alert("提交成功");
+        }
+    </script>
+</head>
+<body>
+<p>员工评价</p>
+  <div>
+      <img src="./img/ym.jpg" border="0" width="120" height="120">
+      <div class="info">
+         <p1>姓名：姚明 <br/></p1>
+         <p1>年龄:35 <br/></p1>
+         <p1>职位：总经理助理<br/></p1>
+         <p1>工号：243533222<br/></p1>
+      </div>
+  </div>
+<div class="evaluate">
+
+   <textarea class="edit" cols="50" rows="5" id="textarea" onKeyDown="textdown(event)"
+             onKeyUp="textup()" onfocus="if(value=='限100字'){value=''}"
+             onblur="if (value ==''){value='限100字'}">限100字</textarea>
+</div>
+
+<button onclick="doSubmit()"> 提交评价</button>
+
+
+<script>
+    function doSubmit(){
+        alert("提交成功");
+    }
+
+    function textdown(e) {
+        textevent = e;
+        if (textevent.keyCode == 8) {
+            return;
+        }
+        if (document.getElementById('textarea').value.length >= 100) {
+            alert("大侠，手下留情，此处限字100")
+            if (!document.all) {
+                textevent.preventDefault();
+            } else {
+                textevent.returnValue = false;
+            }
+        }
+    }
+    function textup() {
+        var s = document.getElementById('textarea').value;
+        //判断ID为text的文本区域字数是否超过100个
+        if (s.length > 100) {
+            document.getElementById('textarea').value = s.substring(0, 100);
+        }
+    }
+</script>
+</body>
+</html>
